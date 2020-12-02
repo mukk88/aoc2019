@@ -1,15 +1,11 @@
 import scala.io.Source
 import scala.collection.mutable.ArrayBuffer
-import summer._
+import pwvalidator._
 
 object Main extends App {
-  val fileStream = getClass.getResourceAsStream("day1.txt")
+  val fileStream = getClass.getResourceAsStream("day2.txt")
   val lines = Source.fromInputStream(fileStream).getLines
-  val input = lines.map(_.toInt).to(ArrayBuffer)
-  val s = new Summer(input)
-  // println(s.sum(2020))
-  val sum = input.fold(0) { (z, i) =>
-    z + i
-  }
-  println(sum)
+  val input = lines.to(ArrayBuffer)
+  val v = new PwValidator(input)
+  println(v.validCount)
 }
